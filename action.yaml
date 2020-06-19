@@ -1,0 +1,79 @@
+name: S3 Deploy
+description: Deploy an AWS S3 using Terraform
+inputs:
+  destroy:
+    description: 'Runs Terraform destroy to remove resources created by this action'
+    required: false
+    default: false
+  deploy:
+    description: 'Runs Terraform apply to create/update resources created by this action'
+    required: false
+    default: true
+  plan:
+    description: 'Runs Terraform plan to check the changes necessary to achieve the desired state'
+    required: false
+    default: true
+
+  cluster_name:
+    description: 'DocumentDB cluster name'
+    required: true
+  username:
+    description: 'Username for the DocumentDB access. Hyphens are not allowed.'
+    required: true
+  credstash_docdb_password:
+    description: 'Credstash secret name/key. Used to retrieve the stored password for the DocumentDB cluster'
+    required: true
+  parameter_group:
+    description: 'A cluster parameter group to associate with the cluster'
+    required: false
+  security_group_ids:
+    description: 'A comma separated list of security group IDs associated with the cluster'
+    required: false
+  port:
+    description: 'The port on which the DB accepts connections'
+    required: false
+    default: 27017
+  storage_encrypted:
+    description: 'Specifies whether the DB cluster is encrypted'
+    required: false
+    default: false
+  apply_immediately:
+    description: 'Specifies whether any cluster modifications are applied immediately, or during the next maintenance window. APPLY IMMEDIATELY WILL CAUSE OUTAGE'
+    required: false
+    default: false
+
+  backup_window:
+    description: 'The daily time range during which automated backups are created in UTC. e.g. 04:00-09:00'
+    required: false
+    default: '07:00-11:00'
+  backup_retention:
+    description: 'The days to retain backups for'
+    required: false
+    default: 1
+
+  instance_count:
+    description: 'Number of instances to create and join to the cluster'
+    required: false
+    default: 1
+  instance_class:
+    description: 'The instance class to use. Supported instance classes: https://docs.aws.amazon.com/documentdb/latest/developerguide/db-instance-classes.html#db-instance-class-specs'
+    required: false
+    default: db.r5.large
+
+  subnet_ids:
+    description: 'A comma separated list of subnet IDs'
+    required: true
+
+outputs:
+  documentdb_name:
+    description: 'Name of the created documentdb cluster'
+  documentdb_arn:
+    description: 'ARN of the created documentdb cluster'
+  documentdb_endpoint:
+    description: 'The DNS address of the DocDB instance'
+  documentdb_reader_endpoint:
+    description: 'A read-only endpoint for the DocDB cluster, automatically load-balanced across replicas'
+  
+runs:
+  using: docker
+  image: Dockerfile
