@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "bucket" {
   region = var.region
 
   dynamic "website" {
-    for_each = var.enable_website ? [] : ["1"]
+    for_each = var.enable_website ? ["1"] : []
 
     content {
       index_document           = var.website_index_document
