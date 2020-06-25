@@ -8,9 +8,9 @@ resource "aws_s3_bucket" "bucket" {
     for_each = var.enable_website ? ["1"] : []
 
     content {
-      index_document           = var.website_index_document
+      index_document           = var.website_redirect != "" ? null : var.website_index_document
       error_document           = var.website_error_document
-      redirect_all_requests_to = var.website_redirect
+      redirect_all_requests_to = var.website_redirect != "" ? var.website_redirect : null
     }
   }
 
