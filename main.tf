@@ -12,7 +12,7 @@ resource "aws_s3_bucket" "bucket" {
   }
 }
 
-resouce "aws_iam_policy" "policy" {
+resource "aws_iam_policy" "policy" {
   name = "s3-${aws_s3_bucket.id}-RW-Access"
   description = "RW Access to S3 bucket. ${var.github_repository}"
 

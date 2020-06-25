@@ -23,7 +23,7 @@ inputs:
     default: 'private'
   bucket_policy:
     description: 'A valid bucket policy JSON document'
-    required: true
+    required: false
 
 outputs:
   bucket_arn:
