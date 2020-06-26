@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "bucket" {
   bucket = var.bucket_name
-  acl    = var.acl
+  acl    = var.enable_website ? "public_read" : var.acl
   policy = var.bucket_policy
   region = var.region
 
@@ -41,6 +41,30 @@ resource "aws_iam_policy" "policy" {
       ]
     }
   ]
+}
+POLICY
+}
+
+resource "aws_s3_bucket_policy" "public_read_policy" {
+  count = var.enable_website ? 1 : 0
+
+  bucket = aws_s3_bucket.bucket.id
+  policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "${aws_s3_bucket.bucket.arn}/*"
+            ]
+        }
+    ]
 }
 POLICY
 }

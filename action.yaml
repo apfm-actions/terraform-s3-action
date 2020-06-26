@@ -22,7 +22,7 @@ inputs:
     required: false
     default: 'private'
   bucket_policy:
-    description: 'A valid bucket policy JSON document'
+    description: 'A valid bucket policy JSON document. If enable_website is true, a public read bucket policy will be used.'
     required: false
 
   enable_website:
