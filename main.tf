@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "bucket" {
   bucket = var.bucket_name
-  acl    = var.enable_website ? "public_read" : var.acl
+  acl    = var.enable_website ? "public-read" : var.acl
   policy = var.bucket_policy
   region = var.region
 
