@@ -18,7 +18,7 @@ inputs:
     description: 'The name of the bucket'
     required: true
   acl:
-    description: 'The canned ACL to apply. https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl'
+    description: 'The canned ACL to apply. https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl. If enable_website is true, "public-read" ACL will be used.'
     required: false
     default: 'private'
   bucket_policy:
@@ -46,7 +46,7 @@ outputs:
   website_endpoint:
     description: 'The website endpoint, if the bucket is configured with a website. If not, this will be an empty string'
   access_policy_arn:
-    description: 'The ARN assigned by AWS to this policy'
+    description: 'The ARN of the IAM policy that grants read-write access to the bucket'
 
 runs:
   using: docker
