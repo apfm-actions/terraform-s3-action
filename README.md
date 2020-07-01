@@ -71,3 +71,7 @@ Outputs
 | bucket_arn                 | The ARN of the bucket                   |
 | website_endpoint           | The website endpoint, if the bucket is configured with a website. If not, this will be an empty string        |
 | access_policy_arn          | The ARN of the IAM policy that grants read-write access to the bucket  |
+
+Known Issues
+-------
+When utilizing the docker image version of this GitHub Action (uses: docker://apfm/terraform-s3-action:latest), input defaults are not working and all input variables must be explicitly defined. For variables without a default value, set the value to 'null' in order to omit the input.
