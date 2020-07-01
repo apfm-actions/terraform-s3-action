@@ -20,7 +20,7 @@ inputs:
   acl:
     description: 'The canned ACL to apply. https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl. If enable_website is true, "public-read" ACL will be used.'
     required: false
-    default: 'private'
+    default: "private"
   bucket_policy:
     description: 'A valid bucket policy JSON document. If enable_website is true, a public read bucket policy will be used.'
     required: false
@@ -32,7 +32,7 @@ inputs:
   website_index_document:
     description: 'Amazon S3 returns this index document when requests are made to the root domain or any of the subfolders'
     required: false
-    default: 'index.html'
+    default: "index.html"
   website_error_document:
     description: 'An absolute path to the document to return in case of a 4XX error'
     required: false
