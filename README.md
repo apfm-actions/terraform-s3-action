@@ -45,6 +45,11 @@ The canned ACL to apply. https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-ove
 A valid bucket policy JSON document. If enable_website is true, a public read bucket policy will be used
 - required: false
 
+### force_destroy
+Allows Terraform to destroy a non-empty S3 bucket
+- required: false
+- default: false
+
 ### enable_website
 If true, configures s3 bucket as a website
 - required: false

@@ -24,6 +24,10 @@ inputs:
   bucket_policy:
     description: 'A valid bucket policy JSON document. If enable_website is true, a public read bucket policy will be used.'
     required: false
+  force_destroy:
+    description: 'Allows Terraform to destroy a non-empty S3 bucket'
+    required: false
+    default: false
 
   enable_website:
     description: 'If true, configures s3 bucket as a website'
